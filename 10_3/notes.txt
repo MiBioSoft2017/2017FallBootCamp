@@ -1,0 +1,11 @@
+---Things Covered---
+-How the internet works
+-What does Django do?
+
+-Starting Django Project:
+	-Setup
+	-Create App
+		-Add app to settings
+	-How does Django know what HTML to send back?
+		-View
+	-Route '/' to a function in the new app, make that function display static HTML made week earlier

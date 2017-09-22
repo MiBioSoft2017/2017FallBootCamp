@@ -1,0 +1,39 @@
+---Things Covered---
+-How the internet works
+-What does Django do?
+
+---Starting Django Project---
+
+1. Start project ($ django-admin startproject PROJECT_NAME)
+2. Make sure that everyone can get on their hosted server
+	$ python manage.py runserver
+	in browser: localhost:8000
+3. Create App (python manage.py startapp APPNAME)
+	Add app to to installed apps in settings
+	Note: To see what the name of the config function is, look in APPNAME/apps.py
+4. How does Django know what HTML to send back?
+	Explain views / how urls are processed in Django
+5. Create views
+	def index(request):
+	def submit_login(request):
+	def submit_logout(request)
+	IMPORTANT: don't name view "login" or "logout", function name will clash with a Django function name
+6. Setup URL files
+	1. Create urls.py in app
+	2. Route '/' to APPNAME/urls.py
+		"url(r'^', include('MyApp.urls'))"
+		IMPORTANT: must import include from django.conf.urls
+	3. In APPNAME/urls.py route each url to its proper view
+		url(r'^$', views.index, name='index'),
+		url(r'^login/$', views.submit_login, name='login'),
+		url(r'^logout/$', views.submit_logout, name='logout'),
+7. Create templates folder in app, then create folder APPNAME in that
+	This is so that Django doesn't get confused when it sees multiple index.HTML
+	It is not necessary in this case but it is good to explain how Django finds templates
+8. Copy HTML from wherever it is on the computer to this new folder
+9. In index and submit_login view:
+	return render(request, 'MyApp/index.html', {}})
+	return render(request, 'MyApp/login.html', {}})
+	IMPORTANT: from django.shortcuts import render
+	Note: We are using render instead of httpresponse because then we don't have to switch it later.
+10. Fix all the bugs when they try to run their page
