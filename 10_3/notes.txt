@@ -1,11 +1,29 @@
 ---Things Covered---
--How the internet works
--What does Django do?
+-What is a relational database (Keep it short)
+-How does Django use it
 
--Starting Django Project:
-	-Setup
-	-Create App
-		-Add app to settings
-	-How does Django know what HTML to send back?
-		-View
-	-Route '/' to a function in the new app, make that function display static HTML made week earlier
+1. Create "Message" model
+	class Message(models.Model):
+		message = models.TextField()
+		sender = models.ForeignKey(User, related_name="user_sender")
+		recipient = models.ForeignKey(User,  related_name="user_recipient")
+	IMPORTANT: from django.contrib.auth.models import User
+			   related_name is necessary since we have two ForeignKey to the same table
+2. Migrate (we need to migrate because the structure of the database is being altered)
+	$python manage.py makemigrations
+	$python manage.py migrate
+3. Talk about how Django already has a model User. We just used it.
+   Also talk about how Django provides a system for developers to manage data manually.
+4. Fire up the server and take a look /admin
+5. Create a super user in order to login
+	$python manage.py createsuperuser
+	Note: Only username and password are needed, others can be left blank
+6. Go back to admin and log in. Notice that we can see users, but not messages.
+   Create a new user. Later this is how they will test their website.
+7. Go to APPNAME/admin.py and register model
+	from django.contrib import admin
+	from . import models
+	# Register your models here.
+	admin.site.register(models.Message)
+8. Go back to admin and notice that you can see messages.
+9. Deal with questions people have.
