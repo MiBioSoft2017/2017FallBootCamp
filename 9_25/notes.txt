@@ -1,1 +1,11 @@
-No notes
+Primary goal:
+Make index.html and login.html so they core of it is the same that I have provided.
+By "core" I mean the forms have the same inputs, with the same names.
+
+Secondary goal:
+Make it look pretty
+
+Note:
+CSS Stylesheets are really good practice. By all means talk about them, but please
+refrain from using them for this mini project. Working with statics in Django
+is a teensy bit complicated and we don't have time to get it working.
