@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The best forum ever</title>
+	</head>
+	<body>
+
+		<a href="/login/">Login</a>
+		<a href="/logout/">Logout</a>
+		{% if request.user.is_authenticated %}
+		{{user.username}}
+		{% endif %}
+		<br><br>
+
+		{% if request.user.is_authenticated %}
+
+		{{note}}
+
+		<form method="post">
+			{% csrf_token %}
+
+
+			To:<br>
+			<input type="text" name="recipient">
+			<br>Message:<br>
+			<textarea name="message" rows="10" cols="30"></textarea>
+			<br><br>
+			<input type="submit" value="Submit">
+		</form>
+
+		<br>
+
+		***Down here is where all received messages will go***
+		{% for m in messages %}
+
+		<div style="border-style:solid">
+			<strong>{{m.sender.username}}</strong>
+			{{m.message|linebreaks}}
+		</div>
+		<br><br>
+
+		{% endfor %}
+
+		{% else %}
+
+		Login
+
+		{% endif %}
+
+	</body>
+</html>
