@@ -1,25 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <title>The best forum ever</title>
-        <link rel="stylesheet" href="style.css">
-	</head>
-	<body>
+        <link src="style.css" type="text/css">
+    </head>
+    <body>
+        <div id="Exercise0">
+            <h1>
+                Exercise 0: GreetBot
+            </h1>        
+            <p>Please input your name below</p>
+            <input id="ex0_in" type="text" /><button onclick="ex0();">Submit</button><br />
+            <p><span id="ex0_out">[Greeting goes here]</span></p>
+            <script>
+                function ex0(){
+                    name = document.getElementById("ex0_in").value;
+                    if(name.trim() == ""){
+                        alert("Please enter a valid name!");
+                        return
+                    }
+                    document.getElementById("ex0_out").innerHTML = "Hello " + name + "!";
+                }
+            </script>
+            <hr />
+        </div>
+        
+        <div id="Exercise1">
+            <h1>
+                Exercise 1: Addition Calculator
+            </h1>
+            Input #1: <input id="ex1_num1" type="number" /><br />
+            Input #2: <input id="ex1_num2" type="number" /><br />
+            <button onclick="ex1();">Add</button><br />
+            <p><span id="ex1_out">[Answer goes here]</span></p>
+            <script>
+                function ex1(){
+                    console.log("FIXME: Implement Ex1!");
+                }
+            </script>
+            <hr />
+        </div>
 
-		<a href="/login/">Login</a>
-		<a href="/logout/">Logout</a>
-		<br>
-		<br>
+        <div id="Exercise2">
+                <h1>
+                    Exercise 2: Generic Calculator
+                </h1>
+                Input #1: <input id="ex2_num1" type="number" /><br />
+                Input #2: <input id="ex2_num2" type="number" /><br />
+                <select id="ex2_options">
+                    <option>Addition</option>
+                    <option>Subtraction</option>
+                    <option>Multiplication</option>
+                    <option>Division</option>
+                </select>
+                <button onclick="ex2();">Submit</button><br />
+                <p><span id="ex2_out">[Answer goes here]</span></p>
+                <script>
+                    function ex2(){
+                        console.log("FIXME: Implement Ex2!");
+                    }
+                </script>
+                <hr />
+            </div>
 
-		<form method="post">
 
-				To:<br>
-				<input type="text" name="recipient">
-				<br>Message:<br>
-				<textarea name="message" rows="10" cols="30"></textarea>
-				<br><br>
-				<input type="submit" value="Submit">
-		</form>
-
-	</body>
+    </body>
 </html>
