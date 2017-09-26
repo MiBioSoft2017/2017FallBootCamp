@@ -1,0 +1,18 @@
+---Things Covered---
+-Users (Sessions)
+-Context
+-Templates
+
+This is a lot to get through. It will be rough.
+
+1. Start with submit_log. Have if statements for
+	-if request.method == "GET":
+	-elif request.method == "POST":
+2. The POST will have data in the request. Get the username and password.
+	For now we can print it then run the server so that we can see that it works.
+	There will be a csrf error. Must add: {% csrf_token %} to form.
+3. Login the user
+	1. Imports:
+		from django.contrib.auth import authenticate, login, logout
+		from django.contrib.auth.models import User
+	2.  

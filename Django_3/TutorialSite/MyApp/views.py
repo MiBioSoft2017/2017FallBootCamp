@@ -26,7 +26,8 @@ def index(request):
         try:
             recip_user = User.objects.get(username = recipient_name)
         except:
-            print("Something went wrong... invalid username")
+            #print("Something went wrong... invalid username")
+            context['note'] = "User does not exist"
             return render(request, 'MyApp/index.html', context)
 
         models.Message.objects.create(
@@ -39,6 +40,7 @@ def index(request):
 
 
 def submit_login(request):
+    context = {}
     if request.method == "GET":
         return render(request, 'MyApp/login.html', {})
     
@@ -46,14 +48,15 @@ def submit_login(request):
         try:
             username = request.POST['username']
             password = request.POST['password']
-
             user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('/')
-            else:
-                return render(request, 'MyApp/login.html', {})
 
+            if user is not None:    
+                login(request, user)
+                return redirect('/') 
+            else:
+                context['note'] = "Wrong username/password"
+                return render(request, 'MyApp/login.html', context)
+                
         except:
             print('Error logging in')
             return redirect('/')

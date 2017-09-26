@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The best forum ever</title>
+	</head>
+	<body>
+
+		<form method="post">
+			{% csrf_token %}
+
+			<input type="text" name="username" placeholder="username">
+			<br>
+			<input type="password" name="password" placeholder="password">
+			<br>
+			
+			<input type="submit" value="Log in">
+		</form>
+
+		{{note}}
+
+	</body>
+</html>
