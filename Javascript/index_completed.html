@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Tutorial (Solutions)</title>
+    </head>
+    <body>
+        <!-- This has been solved -->
+        <div id="Exercise0">
+            <h1>
+                Exercise 0: GreetBot
+            </h1>        
+            <p>Please input your name below</p>
+            <input id="ex0_in" type="text" /><button onclick="ex0();">Submit</button><br />
+            <p><span id="ex0_out">[Greeting goes here]</span></p>
+            <script>
+                function ex0(){
+                    name = document.getElementById("ex0_in").value;
+                    if(name.trim() == ""){
+                        alert("Please enter a valid name!");
+                        return
+                    }
+                    document.getElementById("ex0_out").innerHTML = "Hello " + name + "!";
+                }
+            </script>
+            <hr />
+        </div>
+        
+        <div id="Exercise1">
+            <h1>
+                Exercise 1: Addition Calculator
+            </h1>
+            Input #1: <input id="ex1_num1" value=0 type="number" /><br />
+            Input #2: <input id="ex1_num2" value=0 type="number" /><br />
+            <button onclick="ex1();">Add</button><br />
+            <p><span id="ex1_ans">[Answer goes here]</span></p>
+            <script>
+                function ex1(){
+                    num1 = document.getElementById("ex1_num1").value;
+                    num2 = document.getElementById("ex1_num2").value;
+                    answer = parseFloat(num1) + parseFloat(num2)
+                    document.getElementById("ex1_ans").innerHTML = "Answer: " + answer
+                }
+            </script>
+            <hr />
+        </div>
+
+        <div id="Exercise2">
+                <h1>
+                    Exercise 2: Generic Calculator
+                </h1>
+                Input #1: <input id="ex2_num1" value=0 type="number" /><br />
+                Input #2: <input id="ex2_num2" value=0 type="number" /><br />
+                <select id="ex2_options">
+                    <option>Addition</option>
+                    <option>Subtraction</option>
+                    <option>Multiplication</option>
+                    <option>Division</option>
+                </select><br />
+                <button onclick="ex2();">Submit</button><br />
+                <p><span id="ex2_ans">[Answer goes here]</span></p>
+                <script>
+                    function ex2(){
+                        num1 = parseFloat(document.getElementById("ex2_num1").value);
+                        num2 = parseFloat(document.getElementById("ex2_num2").value);
+                        operation = document.getElementById("ex2_options").value
+                        
+                        answer = null
+                        if(operation == "Addition"){
+                            answer = num1 + num2
+                        }
+                        if(operation == "Subtraction"){
+                            answer = num1 - num2
+                        }
+                        if(operation == "Multiplication"){
+                            answer = num1 * num2
+                        }
+                        if(operation == "Division"){
+                            answer = num1 / num2
+                        }
+                        document.getElementById("ex2_ans").innerHTML = "Answer: " + answer
+                    }
+                </script>
+                <hr />
+            </div>
+        
+            <div id="Exercise3">
+                <h1>
+                    Exercise 3: Calculator with Dynamic Form
+                </h1>
+                <div id="ex3_inputs">
+                    Input #1: <input id="ex3_num1" value=0 type="number" /><br />
+                    Input #2: <input id="ex3_num2" value=0 type="number" /><br />
+                </div>
+                <select id="ex3_options">
+                    <option>Addition</option>
+                    <option>Multiplication</option>
+                </select>
+                <button onclick="ex3_1()">Add new field</button><br />
+                <button onclick="ex3_2();">Submit</button><br />
+                <p><span id="ex3_ans">[Answer goes here]</span></p>
+                <script>
+                    num_inputs = 2
+                    function ex3_1(){
+                        //This adds a new entry field to the input_list
+                        num_inputs += 1
+                        document.getElementById("ex3_inputs").innerHTML += "Input #" + num_inputs + ": <input id=\"ex3_num" + num_inputs +  "\" type=\"number\" value=0 /><br />"
+                        //ex: Input 4: <input id="ex3_num4 type="number" /><br />
+                    }
+                    function ex3_2(){
+                        //This does the operation specified
+                        value_list = []
+                        for(i = 1; i <= num_inputs; ++i){
+                            num = parseFloat(document.getElementById("ex3_num" + i).value);
+                            value_list.push(num)
+                        }
+                        operation = document.getElementById("ex3_options").value
+                        answer = null
+                        if(operation == "Addition"){
+                            answer = 0
+                            for(i=0; i<value_list.length; ++i){
+                                answer = answer + value_list[i]
+                            }
+                        }
+                        if(operation == "Multiplication"){
+                            answer = 1
+                            for(i=0; i<value_list.length; ++i){
+                                answer = answer * value_list[i]
+                            }
+                        }
+                        document.getElementById("ex3_ans").innerHTML = "Answer: " + answer
+
+                    }
+                </script>
+                <hr />
+            </div>
+        
+
+    </body>
+</html>
